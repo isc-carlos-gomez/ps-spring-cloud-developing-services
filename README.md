@@ -1,2 +1,2 @@
-# ps-spring-cloud-developing-services
-Source code of the Pluralsight course Java Microservices with Spring Cloud: Developing Services by Richard Seroter
+# Spring Cloud Developing Services
+Playground for the Pluralsight course _Java Microservices with Spring Cloud: Developing Services_ by Richard Seroter
