@@ -1,0 +1,21 @@
+---
+server:
+  port: 8888
+logging:
+  level:
+    web: trace
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/isc-carlos-gomez/pluralsight-spring-cloudconfig-wa-tolls
+          search-paths:
+            - 'station*'
+          repos:
+            perf:
+              pattern:
+                - "*/perf"
+              uri: https://github.com/isc-carlos-gomez/pluralsight-spring-cloudconfig-wa-tolls-perf
+              search-paths:
+                - 'station*'
