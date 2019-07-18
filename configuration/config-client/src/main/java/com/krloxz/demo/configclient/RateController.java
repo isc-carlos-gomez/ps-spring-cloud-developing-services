@@ -1,0 +1,28 @@
+package com.krloxz.demo.configclient;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class RateController {
+
+  @Value("${rate}")
+  private String rate;
+
+  @Value("${lanecount}")
+  private String lanecount;
+
+  @Value("${tollstart}")
+  private String tollstart;
+
+  @GetMapping("/rate")
+  public String getRate(final Model model) {
+    model.addAttribute("rateamount", this.rate);
+    model.addAttribute("lanes", this.lanecount);
+    model.addAttribute("tollstart", this.tollstart);
+    return "rateview";
+  }
+
+}
