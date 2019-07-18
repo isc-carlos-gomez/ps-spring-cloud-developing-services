@@ -17,11 +17,15 @@ public class RateController {
   @Value("${tollstart}")
   private String tollstart;
 
+  @Value("${connstring}")
+  private String connstring;
+
   @GetMapping("/rate")
   public String getRate(final Model model) {
     model.addAttribute("rateamount", this.rate);
     model.addAttribute("lanes", this.lanecount);
     model.addAttribute("tollstart", this.tollstart);
+    model.addAttribute("connstring", this.connstring);
     return "rateview";
   }
 

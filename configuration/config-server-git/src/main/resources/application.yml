@@ -4,6 +4,7 @@ server:
 logging:
   level:
     web: trace
+    org.springframework.security: trace
 spring:
   cloud:
     config:
@@ -19,7 +20,3 @@ spring:
               uri: https://github.com/isc-carlos-gomez/pluralsight-spring-cloudconfig-wa-tolls-perf
               search-paths:
                 - 'station*'
-  security:
-    user:
-      name: pluralsight
-      password: pluralsight

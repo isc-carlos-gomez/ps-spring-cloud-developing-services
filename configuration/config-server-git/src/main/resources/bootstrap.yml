@@ -1,0 +1,12 @@
+encrypt:
+  key: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+spring:
+  security:
+    user:
+      name: pluralsight
+      password: pluralsight
+  cloud:
+    config:
+      server:
+        encrypt:
+          enabled: false
