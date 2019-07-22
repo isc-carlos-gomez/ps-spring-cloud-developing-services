@@ -1,5 +1,6 @@
 package com.krloxz.demo.task;
 
+import java.util.Arrays;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,10 +26,11 @@ public class TaskApplication {
     public void run(final String... arguments) throws Exception {
       if (arguments != null) {
         System.out.println("Arguments length: " + arguments.length);
+        System.out.println("Arguments: " + Arrays.toString(arguments));
 
-        final String stationId = arguments[1];
-        final String licensePlate = arguments[2];
-        final String timestamp = arguments[3];
+        final String stationId = arguments[0];
+        final String licensePlate = arguments[1];
+        final String timestamp = arguments[2];
         System.out.println("Station ID is " + stationId + ", plate is " + licensePlate
             + ", timestamp is " + timestamp);
       }

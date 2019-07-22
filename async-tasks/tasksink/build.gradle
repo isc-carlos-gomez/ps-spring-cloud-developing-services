@@ -1,7 +1,6 @@
 plugins {
 	id 'org.springframework.boot' version '2.1.6.RELEASE'
 	id 'java'
-	id 'maven-publish'
 }
 
 apply plugin: 'io.spring.dependency-management'
@@ -19,11 +18,11 @@ ext {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
-	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.cloud:spring-cloud-starter-stream-rabbit'
 	implementation 'org.springframework.cloud:spring-cloud-starter-task'
-	implementation 'mysql:mysql-connector-java'
+	implementation 'org.springframework.cloud:spring-cloud-deployer-local:2.0.3.RELEASE'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 }
 
 dependencyManagement {
@@ -31,12 +30,3 @@ dependencyManagement {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
 	}
 }
-
-publishing {
-	publications {
-		maven(MavenPublication) {
-			from components.java
-		}
-	}
-}
-
