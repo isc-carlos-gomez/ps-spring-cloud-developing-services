@@ -2,9 +2,14 @@ package com.krloxz.demo.secureservice;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.oauth2.resource.ResourceServerProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
+import org.springframework.security.oauth2.provider.token.ResourceServerTokenServices;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +22,16 @@ public class SecureserviceApplication {
     SpringApplication.run(SecureserviceApplication.class, args);
   }
 
+  @Autowired
+  private ResourceServerProperties sso;
+
+  @Bean
+  public ResourceServerTokenServices myUserInfoTokenServices() {
+    return new CustomUserInfoTokenServices(this.sso.getUserInfoUri(), this.sso.getClientId());
+  }
+
   @GetMapping("/tolldata")
+  @PreAuthorize("#oauth2.hasScope('toll_read') and hasAuthority('ROLE_OPERATOR')")
   public List<TollUsage> getTollData() {
 
     final List<TollUsage> tolls = new ArrayList<TollUsage>();
